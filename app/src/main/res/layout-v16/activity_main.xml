@@ -25,26 +25,20 @@
             android:id="@+id/startAPICall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Start API Call" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/start_api_call" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
 
             <TextView
                 android:id="@+id/jsonResult"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
                 android:fontFamily="sans-serif-condensed"
+                android:layout_gravity="start"
                 android:textAlignment="viewStart"
                 android:textColor="@android:color/black" />
         </ScrollView>
