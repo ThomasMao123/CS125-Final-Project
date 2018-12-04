@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="51dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="198dp"
+            app:srcCompat="@mipmap/mtd" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:text="Me"
+                android:textColor="@color/colorAccent"
+                android:textSize="120sp"
+                android:textStyle="bold|italic"
+                app:fontFamily="@font/aldrich" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/turntosecondpage"
+                android:layout_width="149dp"
+                android:layout_height="match_parent"
+                android:text="start!" />
+        </TableRow>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

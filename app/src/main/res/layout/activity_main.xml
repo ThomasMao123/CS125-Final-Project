@@ -1,52 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:weightSum="100"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical" />
-
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/startAPICall"
+            android:id="@+id/startGetNewsCall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Start API Call" />
+            android:text="Get News" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <ScrollView
+        <EditText
+            android:id="@+id/editText"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Display News" />
 
-            <TextView
-                android:id="@+id/jsonResult"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:fontFamily="sans-serif-condensed"
-                android:textAlignment="viewStart"
-                android:textColor="@android:color/black" />
-        </ScrollView>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="78dp">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="212dp"
+                android:layout_height="match_parent"
+                android:text="Get stops near me" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Pick a location" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="279dp"
+                android:layout_height="match_parent"
+                android:text="Get a list of departure time of stops near me " />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Pick a time" />
+        </TableRow>
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/googlemap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
-</FrameLayout>
+
+</android.support.constraint.ConstraintLayout>
