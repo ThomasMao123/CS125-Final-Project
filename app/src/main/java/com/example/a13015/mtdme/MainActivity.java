@@ -1,6 +1,7 @@
 package com.example.a13015.mtdme;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -40,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
                 startAPICall();
             }
         });
+        final Button checkloc = findViewById(R.id.checkloc);
+        checkloc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d("check location", "check location button clicked");
+                startActivity(new Intent(MainActivity.this, MapsActivity.class));
+            }
+        });
+
     }
     void startAPICall() {
         try {

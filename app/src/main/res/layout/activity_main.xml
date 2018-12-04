@@ -59,6 +59,12 @@
                 android:text="Pick a time" />
         </TableRow>
 
+        <Button
+            android:id="@+id/checkloc"
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:text="Check your location!" />
+
         <com.google.android.gms.maps.MapView
             android:id="@+id/googlemap"
             android:layout_width="match_parent"
