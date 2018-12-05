@@ -17,6 +17,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.MapView;
+import org.json.*;
+//import com.google.gson.JsonObject;
+
 //import com.google.android.gms.maps.MapView;
 
 import org.json.JSONObject;
@@ -61,8 +64,18 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(final JSONObject response) {
                             Log.d("Get News", response.toString());
-                            TextView textView = findViewById(R.id.editText);
-                            textView.setText(response.toString());
+                            //TextView textView = findViewById(R.id.editText);
+
+                            try {
+                                JSONArray jbarr = response.getJSONArray("news");
+                                String news = jbarr.getJSONObject(0).getString("title");
+                                TextView textView = findViewById(R.id.editText);
+                                textView.setText(news);
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
                         }
                     }, new Response.ErrorListener() {
                 @Override
