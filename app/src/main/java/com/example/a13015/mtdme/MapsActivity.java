@@ -19,9 +19,18 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.List;
 import java.util.ArrayList;
-
 import java.io.IOException;
 import java.util.List;
+import android.widget.TextView;
+import android.os.Build;
+import android.app.Service;
+import android.location.Criteria;
+import java.text.DateFormat;
+import android.content.DialogInterface;
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.annotation.TargetApi;
+import android.provider.Settings;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -60,7 +69,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         String str = addressList.get(0).getLocality()+",";
                         str += addressList.get(0).getCountryName();
                         mMap.addMarker(new MarkerOptions().position(latlng).title(str));
-                        mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, 20f));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -95,7 +104,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         String str = addressList.get(0).getLocality()+",";
                         str += addressList.get(0).getCountryName();
                         mMap.addMarker(new MarkerOptions().position(latlng).title(str));
-                        mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng,20f));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
