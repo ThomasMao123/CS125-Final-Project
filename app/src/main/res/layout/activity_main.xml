@@ -32,7 +32,7 @@
             android:layout_height="78dp">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/searchstop"
                 android:layout_width="212dp"
                 android:layout_height="match_parent"
                 android:text="Get stops near me" />

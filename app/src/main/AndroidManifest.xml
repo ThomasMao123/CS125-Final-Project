@@ -29,6 +29,10 @@
             android:name=".MapsActivity"
             android:label="Map">
         </activity>
+        <activity
+            android:name=".locatestop"
+            android:label="LocateStop">
+        </activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

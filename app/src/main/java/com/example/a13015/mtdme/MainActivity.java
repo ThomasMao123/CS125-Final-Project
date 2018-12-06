@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1;
 
+    public static Location STOP_TO_SEARCH_LOCATION;
+    //public static String[] stops = new String[6];
+    //public static double[][] stopLocs = new double[6][2];
+
     TextView tvLatitude, tvLongitude, tvTime;
     LocationManager locationManager;
     Location loc;
@@ -64,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     boolean isGPS = false;
     boolean isNetwork = false;
     boolean canGetLocation = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,6 +122,80 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
             public void onClick(final View v) {
                 Log.d("check location", "check location button clicked");
                 startActivity(new Intent(MainActivity.this, MapsActivity.class));
+            }
+        });
+        final Button searchstop = findViewById(R.id.searchstop);
+        searchstop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d("search stop", "search stop button clicked");
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+                final View mView = getLayoutInflater().inflate(R.layout.searchstopdialog, null);
+                double lat = loc.getLatitude();
+                double lon = loc.getLongitude();
+                String strLat = Double.toString(lat);
+                String strLon = Double.toString(lon);
+                try {
+                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                            Request.Method.GET,
+                            "https://developer.cumtd.com/api/v2.2/json/getstopsbylatlon" + "?lat=" + strLat + "&lon=" + strLon + "&count=6&key=" + Api_Key,
+                            null,
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(final JSONObject response) {
+                                    Log.d("Get nearest stops", response.toString());
+                                    //TextView textView = findViewById(R.id.editText);
+
+                                    try {
+                                        JSONArray jbarr = response.getJSONArray("stops");
+
+                                        for (int i = 0; i <= 5; i++) {
+                                            GlobalVariableContainer.stops[i] = jbarr.getJSONObject(i).getString("stop_name");
+                                            JSONArray jbarr1 = jbarr.getJSONObject(i).getJSONArray("stop_points");
+                                            GlobalVariableContainer.stopLocs[i][0] = jbarr1.getJSONObject(0).getDouble("stop_lat");
+                                            GlobalVariableContainer.stopLocs[i][1] = jbarr1.getJSONObject(0).getDouble("stop_lon");
+
+                                        }
+                                        Button stop1name = mView.findViewById(R.id.stop1name);
+                                        stop1name.setText(GlobalVariableContainer.stops[0]);
+
+                                        Button stop2name = mView.findViewById(R.id.stop2name);
+                                        stop2name.setText(GlobalVariableContainer.stops[1]);
+                                        Button stop3name = mView.findViewById(R.id.stop3name);
+                                        stop3name.setText(GlobalVariableContainer.stops[2]);
+                                        Button stop4name = mView.findViewById(R.id.stop4name);
+                                        stop4name.setText(GlobalVariableContainer.stops[3]);
+                                        /**
+                                        TextView stop5name = mView.findViewById(R.id.stop5name);
+                                        stop4name.setText("234");
+                                        TextView stop6name = mView.findViewById(R.id.stop6name);
+                                        stop4name.setText("456");
+                                         */
+                                        stop1name.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Log.d("locate stop on map", "locate stop button clicked");
+                                                startActivity(new Intent(MainActivity.this, locatestop.class));
+                                            }
+                                        });
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(final VolleyError error) {
+                            Log.w("Get News", error.toString());
+                        }
+                    });
+                    requestQueue.add(jsonObjectRequest);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                mBuilder.setView(mView);
+                AlertDialog dialog = mBuilder.create();
+                dialog.show();
             }
         });
     }
@@ -334,5 +413,51 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         if (locationManager != null) {
             locationManager.removeUpdates(this);
         }
+    }
+    void startSearchNearestStop() {
+        double lat = loc.getLatitude();
+        double lon = loc.getLongitude();
+        String strLat = Double.toString(lat);
+        String strLon = Double.toString(lon);
+
+        try {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                    Request.Method.GET,
+                    "https://developer.cumtd.com/api/v2.2/json/getstopsbylatlon" + "?lat=" + strLat + "&lon=" + strLon + "&count=4&key=" + Api_Key,
+                    null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(final JSONObject response) {
+                            Log.d("Get nearest stops", response.toString());
+                            //TextView textView = findViewById(R.id.editText);
+
+                            try {
+                                JSONArray jbarr = response.getJSONArray("stops");
+                                String stop = jbarr.getJSONObject(0).getString("stop_name");
+                                TextView textView = findViewById(R.id.stop1name);
+                                textView.setText(stop);
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(final VolleyError error) {
+                    Log.w("Get News", error.toString());
+                }
+            });
+            requestQueue.add(jsonObjectRequest);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    void startSearchBus() {
+
+    }
+    void startLocateBus() {
+
     }
 }
