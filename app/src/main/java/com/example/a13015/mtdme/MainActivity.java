@@ -151,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
                                         for (int i = 0; i <= 5; i++) {
                                             GlobalVariableContainer.stops[i] = jbarr.getJSONObject(i).getString("stop_name");
+                                            GlobalVariableContainer.stopID[i] = jbarr.getJSONObject(i).getString("stop_id");
                                             JSONArray jbarr1 = jbarr.getJSONObject(i).getJSONArray("stop_points");
                                             GlobalVariableContainer.stopLocs[i][0] = jbarr1.getJSONObject(0).getDouble("stop_lat");
                                             GlobalVariableContainer.stopLocs[i][1] = jbarr1.getJSONObject(0).getDouble("stop_lon");
@@ -174,8 +175,29 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                                         stop1name.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                Log.d("locate stop on map", "locate stop button clicked");
+                                                Log.d("locate stop1 on map", "locate stop1 button clicked");
                                                 startActivity(new Intent(MainActivity.this, locatestop.class));
+                                            }
+                                        });
+                                        stop2name.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Log.d("locate stop2 on map", "locate stop2 button clicked");
+                                                startActivity(new Intent(MainActivity.this, locatestop2.class));
+                                            }
+                                        });
+                                        stop3name.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Log.d("locate stop3 on map", "locate stop3 button clicked");
+                                                startActivity(new Intent(MainActivity.this, locatestop3.class));
+                                            }
+                                        });
+                                        stop4name.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Log.d("locate stop4 on map", "locate stop4 button clicked");
+                                                startActivity(new Intent(MainActivity.this, locatestop4.class));
                                             }
                                         });
                                     } catch (Exception e) {

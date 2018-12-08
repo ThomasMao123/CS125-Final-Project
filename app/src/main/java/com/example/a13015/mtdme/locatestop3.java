@@ -32,7 +32,7 @@ import android.content.Intent;
 import android.annotation.TargetApi;
 import android.provider.Settings;
 
-public class locatestop extends FragmentActivity implements OnMapReadyCallback {
+public class locatestop3 extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     LocationManager locationManager;
@@ -40,7 +40,7 @@ public class locatestop extends FragmentActivity implements OnMapReadyCallback {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.locatestop);
+        setContentView(R.layout.locatestop3);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -143,9 +143,9 @@ public class locatestop extends FragmentActivity implements OnMapReadyCallback {
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng stop1loc = new LatLng(GlobalVariableContainer.stopLocs[0][0], GlobalVariableContainer.stopLocs[0][1]);
+        LatLng stop3loc = new LatLng(GlobalVariableContainer.stopLocs[2][0], GlobalVariableContainer.stopLocs[2][1]);
         //LatLng sydney = new LatLng(0, 0);
-        mMap.addMarker(new MarkerOptions().position(stop1loc).title("Here is " + GlobalVariableContainer.stops[0] + " Bus stop."));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(stop1loc,20f));
+        mMap.addMarker(new MarkerOptions().position(stop3loc).title("Here is " + GlobalVariableContainer.stops[2] + " Bus stop."));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(stop3loc, 20f));
     }
 }

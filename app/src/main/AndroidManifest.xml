@@ -33,6 +33,21 @@
             android:name=".locatestop"
             android:label="LocateStop">
         </activity>
+        <activity
+            android:name=".locatestop2"
+            android:label="LocateStop2">
+        </activity>
+        <activity
+            android:name=".locatestop3"
+            android:label="LocateStop3">
+        </activity>
+        <activity
+            android:name=".locatestop4"
+            android:label="LocateStop4">
+        </activity>
+
+
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
