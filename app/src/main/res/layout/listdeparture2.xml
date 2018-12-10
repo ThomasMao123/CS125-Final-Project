@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="38dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/stopname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@android:style/TextAppearance.Material.Large"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:fontFamily="cursive" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <TextView
+                android:layout_width="46dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/busname0"
+                android:layout_width="176dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/eta0"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="@android:style/TextAppearance.Material.Large"
+                app:fontFamily="sans-serif" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <TextView
+                android:layout_width="46dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/busname1"
+                android:layout_width="176dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/eta1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="60dp" >
+
+            <TextView
+                android:layout_width="46dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/busname2"
+                android:layout_width="176dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/eta2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="60dp" >
+
+            <TextView
+                android:layout_width="45dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/busname3"
+                android:layout_width="177dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/eta3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </TableRow>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

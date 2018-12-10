@@ -45,9 +45,14 @@
             android:name=".locatestop4"
             android:label="LocateStop4">
         </activity>
-
-
-
+        <activity
+            android:name=".listdeparture1"
+            android:label="ListDeparture">
+        </activity>
+        <activity
+            android:name=".listdeparture2"
+            android:label="ListDeparture">
+        </activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
