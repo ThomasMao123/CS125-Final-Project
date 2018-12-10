@@ -53,6 +53,14 @@
             android:name=".listdeparture2"
             android:label="ListDeparture">
         </activity>
+        <activity
+            android:name=".listdeparture3"
+            android:label="ListDeparture">
+        </activity>
+        <activity
+            android:name=".listdeparture4"
+            android:label="ListDeparture">
+        </activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

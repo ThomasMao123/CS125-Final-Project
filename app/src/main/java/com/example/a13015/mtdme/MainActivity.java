@@ -190,14 +190,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                                             @Override
                                             public void onClick(View v) {
                                                 Log.d("locate stop3 on map", "locate stop3 button clicked");
-                                                startActivity(new Intent(MainActivity.this, locatestop3.class));
+                                                startActivity(new Intent(MainActivity.this, listdeparture3.class));
                                             }
                                         });
                                         stop4name.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
                                                 Log.d("locate stop4 on map", "locate stop4 button clicked");
-                                                startActivity(new Intent(MainActivity.this, locatestop4.class));
+                                                startActivity(new Intent(MainActivity.this, listdeparture4.class));
                                             }
                                         });
                                     } catch (Exception e) {
