@@ -111,6 +111,15 @@ public class listdeparture1 extends AppCompatActivity {
                                 TextView eta3 = findViewById(R.id.eta3);
                                 eta3.setText(etaasstr3);
 
+                                Button checkstoploc1 = findViewById(R.id.checkstoploc1);
+                                checkstoploc1.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Log.d("locate stop1 on map", "locate stop1 button clicked");
+                                        startActivity(new Intent(listdeparture1.this, locatestop.class));
+                                    }
+                                });
+
 
                             } catch (Exception e) {
                                 e.printStackTrace();

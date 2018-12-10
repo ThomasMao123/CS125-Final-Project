@@ -106,5 +106,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal">
+
+            <Button
+                android:id="@+id/checkstoploc4"
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:text="Check bus stop location!"
+                android:textAllCaps="true"
+                android:textAppearance="@android:style/TextAppearance.Material.Large"
+                android:textStyle="bold|italic" />
+        </TableRow>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
