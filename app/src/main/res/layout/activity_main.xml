@@ -17,7 +17,7 @@
             android:id="@+id/startGetNewsCall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Get News" />
+            android:text="Get MTD News!" />
 
         <EditText
             android:id="@+id/editText"
@@ -38,10 +38,10 @@
                 android:text="Get stops near me" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/searchstopbyname"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Pick a location" />
+                android:text="Type in the stop you want to search" />
         </TableRow>
 
         <TableRow
@@ -49,16 +49,11 @@
             android:layout_height="80dp">
 
             <Button
-                android:id="@+id/button4"
-                android:layout_width="279dp"
-                android:layout_height="match_parent"
-                android:text="Get a list of departure time of stops near me " />
-
-            <Button
-                android:id="@+id/button5"
+                android:id="@+id/checkroute"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Pick a time" />
+                android:text="Type in the place you want to go to generate a route designed for you!" />
+
         </TableRow>
 
         <Button

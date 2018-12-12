@@ -8,9 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.util.List;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -220,7 +223,89 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                 dialog.show();
             }
         });
+        final Button searchstopbyname = findViewById(R.id.searchstopbyname);
+        searchstopbyname.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+                final View mView = getLayoutInflater().inflate(R.layout.stopnametypeindialog, null);
+                final EditText namein = mView.findViewById(R.id.stopnametypein);
+                Button takein = mView.findViewById(R.id.checkstop);
+                takein.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String stopnamein = namein.getText().toString();
+                        GlobalVariableContainer.searchstopname = stopnamein;
+                        try {
+                            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                                    Request.Method.GET,
+                                    "https://developer.cumtd.com/api/v2.2/json/getstop" + "?stop_id=" + stopnamein + "&key=" + Api_Key,
+                                    null,
+                                    new Response.Listener<JSONObject>() {
+                                        @Override
+                                        public void onResponse(final JSONObject response) {
+                                            try {
+                                                JSONObject stopinfo = response.getJSONArray("stops").getJSONObject(0);
+                                                JSONObject stop_pointinfo = stopinfo.getJSONArray("stop_points").getJSONObject(0);
+                                                GlobalVariableContainer.searchstoploc[0] = stop_pointinfo.getDouble("stop_lat");
+                                                GlobalVariableContainer.searchstoploc[1] = stop_pointinfo.getDouble("stop_lon");
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+
+                                        }
+                                    }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(final VolleyError error) {
+                                    Log.w("Get News", error.toString());
+                                }
+                            });
+                            requestQueue.add(jsonObjectRequest);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        startActivity(new Intent(MainActivity.this, listdepartureforsearchstop.class));
+                    }
+                });
+                mBuilder.setView(mView);
+                AlertDialog dialog = mBuilder.create();
+                dialog.show();
+            }
+        });
+        final Button checkroute = findViewById(R.id.checkroute);
+        checkroute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+
+                final View mView = getLayoutInflater().inflate(R.layout.checkroutedialog, null);
+
+                final EditText namein = mView.findViewById(R.id.placetypein);
+                Button takein = mView.findViewById(R.id.checkroute);
+                takein.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String placenamein = namein.getText().toString();
+                        Geocoder geocoder = new Geocoder(MainActivity.this);
+                        List<Address> infos = new ArrayList<>();
+                        try {
+                            infos = geocoder.getFromLocationName(placenamein, 1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        GlobalVariableContainer.togotoloc[0] = infos.get(0).getLatitude();
+                        GlobalVariableContainer.togotoloc[1] = infos.get(0).getLongitude();
+                        startActivity(new Intent(MainActivity.this, displayroute.class));
+                    }
+                });
+                mBuilder.setView(mView);
+                AlertDialog dialog = mBuilder.create();
+                dialog.show();
+            }
+        });
+
     }
+
     void startAPICall() {
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(

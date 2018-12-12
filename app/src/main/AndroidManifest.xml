@@ -61,6 +61,22 @@
             android:name=".listdeparture4"
             android:label="ListDeparture">
         </activity>
+        <activity
+            android:name=".locatebus1ofdeparture1"
+            android:label="LocateBus">
+        </activity>
+        <activity
+            android:name=".listdepartureforsearchstop"
+            android:label="ListDeparture">
+        </activity>
+        <activity
+            android:name=".locatesearchstop"
+            android:label="LocateStop">
+        </activity>
+        <activity
+            android:name=".displayroute"
+            android:label="DisplayRoute">
+        </activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
